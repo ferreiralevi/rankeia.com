@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sorteador Por Link</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: rgba(0, 123, 255, 0.95);
+      color: white;
+      padding: 0 30px;
+      height: 90px;
+      display: flex;
+      justify-content: space-between; /* Logo esquerda | Nav centro | Logo direita */
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .logo-header {
+      height: 55px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .btn-experimente {
+      display: inline-block;
+      background-color: #28a745;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      margin-top: 20px;
+    }
+
+    .btn-experimente:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 40px 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    h2 { color: #007bff; margin-bottom: 25px; }
+
+    /* Estilo dos Planos */
+    .planos {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .plano {
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      width: 200px;
+      transition: transform 0.3s;
+    }
+
+    .plano:hover { transform: translateY(-5px); }
+
+    .plano.destaque {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .plano.destaque h3, .plano.destaque .preco { color: white; }
+
+    .preco { font-weight: bold; font-size: 20px; color: #28a745; margin: 15px 0; }
+
+    .btn-plano {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    footer {
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 15px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho com Logos nas extremidades -->
+  <header>
+    <!-- Logo Anhanguera (Esquerda) -->
+    <img src="logo anhanguera.png.png" alt="Logo Anhanguera" class="logo-header">
+
+    <!-- Menu Central -->
+    <nav>
+      <a href="#">Início</a>
+      <a href="#solucoes">Soluções</a>
+      <a href="#sobre-nos">Sobre nós</a>
+      <a href="#contato">Contato</a>
+      <a href="#sustentabilidade">Sustentabilidade</a>
+    </nav>
+
+    <!-- Logo Rankeia (Direita) -->
+    <img src="Logo rankeia.png.png" alt="Logo Rankeia" class="logo-header">
+  </header>
+
+  <main>
+    <h1>Inovação em Gestão de Grupos</h1>
+    <p>Seja bem-vindo a uma nova forma de gerir equipes e resultados!</p>
+    <p>Nossa proposta para empresas é incluir sorteios de premiações baseados em performance: 
+       os colaboradores com melhor pontuação no período garantem sua participação.</p>
+    
+    <a href="login.html" class="btn-experimente">Experimente Agora</a>
+  </main>
+
+  <!-- Soluções -->
+  <section class="solucoes" id="solucoes">
+    <h2>Nossas Soluções</h2>
+    <div class="planos">
+      <div class="plano">
+        <h3>Diamante</h3>
+        <p>Ideal para organizações que precisam sortear metas e prêmios entre equipes.(Quantidade Sobre Demanda)</p>
+        <p class="preco">R$ 350,00/mensal</p>
+        <a href="#" class="btn-plano">Assinar</a>
+      </div>
+
+      <div class="plano">
+        <h3>Ouro</h3>
+        <p>Para profissionais autônomos que desejam sorteios e metas pessoais. (Até 500  Registros)</p>
+        <p class="preco">R$ 230,00/anual</p>
+        <a href="#" class="btn-plano">Assinar</a>
+      </div>
+      
+      <div class="plano destaque">
+        <h3>Free</h3>
+        <p>Experimente as funcionalidades básicas de forma gratuita. (Até 10 Registros)</p>
+        <p class="preco">R$ 0,00</p>
+        <a href="#" class="btn-plano">Começar</a>
+      </div>
+  </section>
+
+    <!-- Sustentabilidade -->
+  <section class="sustentabilidade" id="sustentabilidade">
+    <h2>Sustentabilidade</h2>
+    <p>Estamos comprometidos com práticas sustentáveis que impactam positivamente o meio ambiente e a sociedade.</p>
+    <p>Nossas ações incluem a redução de consumo de papel através de processos digitais, a otimização de recursos em nossos servidores e a promoção de iniciativas que incentivam a consciência ambiental em nossos clientes e parceiros.</p>
+    <p>Acreditamos que pequenas atitudes, quando somadas, podem gerar grandes mudanças. Por isso, buscamos constantemente inovar de maneira responsável, garantindo que nosso crescimento seja aliado ao cuidado com o planeta.</p>
+  </section>
+
+  <!-- Contato -->
+  <section class="contato" id="contato">
+    <h2>Contato</h2>
+    <p>📱 (11) 90000-0001 | 📱 (21) 98888-0002</p>
+    <p>✉ contato@sorteadorlink.com | ✉ suporte@sorteadorlink.com</p>
+  </section>
+  
+ <!-- Sobre Nós -->
+  <section class="sobre-nos" id="sobre-nos">
+    <h2>Sobre Nós</h2>
+    <p>Somos uma plataforma desenvolvida com o objetivo de simplificar e automatizar processos que fazem a diferença no dia a dia.</p>
+    <p>Nossa principal missão é facilitar sorteios no ambiente educacional — promovendo transparência, imparcialidade e agilidade — além de oferecer ferramentas que ajudam sua empresa a gerir metas e resultados de forma mais organizada e eficiente.</p>
+    <p>Acreditamos que tecnologia pode ser uma grande aliada na educação e nos negócios. Por isso, criamos soluções práticas, intuitivas e pensadas para atender às suas necessidades com profissionalismo e inovação.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Rankeia & Anhanguera. Todos os direitos reservados.
+  </footer>
+
+</body>
+</html>
