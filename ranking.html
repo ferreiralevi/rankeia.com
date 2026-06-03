@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Funcionários do Mês</title>
+    <style>
+        body { font-family: sans-serif; background: #e9ecef; padding: 20px; text-align: center; }
+        .ranking-container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .podium { display: flex; justify-content: space-around; align-items: flex-end; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px; }
+        .place { padding: 10px; border-radius: 8px; width: 30%; }
+        .first { background: #ffd700; height: 120px; order: 2; font-weight: bold; } /* Ouro */
+        .second { background: #c0c0c0; height: 100px; order: 1; } /* Prata */
+        .third { background: #cd7f32; height: 80px; order: 3; } /* Bronze */
+        .list-others { text-align: left; margin-top: 20px; }
+        .item-list { padding: 10px; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; }
+        .voltar { display: inline-block; margin-top: 20px; color: #007bff; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="ranking-container">
+    <h2 id="tituloMes">Funcionários de Abril</h2>
+    
+    <div class="podium" id="podio">
+        <!-- Pódio gerado via JS -->
+    </div>
+
+    <div class="list-others" id="demaisFuncionarios">
+        <h3>Classificação Geral</h3>
+        <!-- Restante da lista aqui -->
+    </div>
+
+    <a href="Iniciar.html" class="voltar">← Voltar para Cadastro</a>
+</div>
+
+<script>
+    const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    document.getElementById('tituloMes').innerText = "Funcionários de " + meses[new Date().getMonth()];
+
+    let funcionarios = JSON.parse(localStorage.getItem('listaFuncionarios')) || [];
+    
+    // Organiza do maior para o menor score
+    funcionarios.sort((a, b) => b.score - a.score);
+
+    const podioDiv = document.getElementById('podio');
+    const listaDiv = document.getElementById('demaisFuncionarios');
+
+    if(funcionarios.length === 0) {
+        podioDiv.innerHTML = "Nenhum funcionário cadastrado.";
+    } else {
+        // Gerar Pódio (Top 3)
+        const top3 = [
+            { pos: 'second', label: '2º Lugar', data: funcionarios[1] },
+            { pos: 'first', label: '1º Lugar', data: funcionarios[0] },
+            { pos: 'third', label: '3º Lugar', data: funcionarios[2] }
+        ];
+
+        top3.forEach(p => {
+            if(p.data) {
+                podioDiv.innerHTML += `
+                    <div class="place ${p.pos}">
+                        <div>${p.label}</div>
+                        <small>${p.data.nome}</small><br>
+                        <strong>${p.data.score}</strong>
+                    </div>`;
+            }
+        });
+
+        // Gerar restante da lista (do 4º em diante)
+        funcionarios.forEach((f, i) => {
+            if(i >= 3) {
+                listaDiv.innerHTML += `
+                    <div class="item-list">
+                        <span>${i + 1}º - ${f.nome}</span>
+                        <span>Score: ${f.score}</span>
+                    </div>`;
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

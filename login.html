@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Sistema de RH</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 350px; }
+        h2 { text-align: center; color: #333; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        
+        .footer-buttons { display: flex; justify-content: space-between; margin-top: 20px; align-items: center; }
+        
+        .btn-register { color: #007bff; text-decoration: none; font-size: 14px; font-weight: bold; cursor: pointer; }
+        .btn-register:hover { text-decoration: underline; }
+        
+        .btn-login { background: #28a745; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-size: 16px; font-weight: bold; }
+        .btn-login:hover { background: #218838; }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Acesso ao Sistema</h2>
+    
+    <div class="form-group">
+        <label>Usuário:</label>
+        <input type="text" id="user" placeholder="Digite seu usuário">
+    </div>
+    
+    <div class="form-group">
+        <label>Senha:</label>
+        <input type="password" id="pass" placeholder="Digite sua senha">
+    </div>
+
+    <div class="footer-buttons">
+        <a class="btn-register" onclick="registrar()">Registre-se</a>
+        <button class="btn-login" onclick="validarLogin()">Acessar</button>
+    </div>
+</div>
+
+<script>
+    function registrar() {
+        const u = document.getElementById('user').value;
+        const s = document.getElementById('pass').value;
+        
+        if(!u || !s) {
+            alert("Preencha usuário e senha para registrar!");
+            return;
+        }
+        
+        localStorage.setItem('user_cadastrado', u);
+        localStorage.setItem('pass_cadastrado', s);
+        alert("Usuário registrado com sucesso! Agora você pode acessar.");
+    }
+
+    function validarLogin() {
+        const u = document.getElementById('user').value;
+        const s = document.getElementById('pass').value;
+        
+        const uSalvo = localStorage.getItem('user_cadastrado');
+        const sSalvo = localStorage.getItem('pass_cadastrado');
+
+        // Valida contra o registro ou o padrão admin/123
+        if ((u === uSalvo && s === sSalvo) || (u === "admin" && s === "123")) {
+            sessionStorage.setItem('logado', 'true');
+            // Link corrigido para o seu arquivo iniciar.html
+            window.location.href = "iniciar.html"; 
+        } else {
+            alert("Usuário ou senha incorretos!");
+        }
+    }
+</script>
+
+</body>
+</html>
